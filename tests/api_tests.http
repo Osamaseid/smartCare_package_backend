@@ -1,0 +1,34 @@
+### Get all Packages
+GET http://127.0.0.1:8000/packages/
+
+### Get single package (by ID)
+GET http://127.0.0.1:8000/packages/1
+
+### Create new package
+POST http://127.0.0.1:8000/packages
+Content-Type: application/json
+
+{
+  "name": "Safekitchen plus",
+  "components": ["Smart Stove Sensor", "Voice Assistant", "Auto Shutoff Device"],
+  "accessibility": 9,
+  "steps": [
+    "Install stove sensor",
+    "Connect to wifi",
+    "Test voice commands"
+  ]
+}
+
+### Get package that does not exist (404 test)
+GET http://127.0.0.1:8000/packages/99999
+
+### Create package with invalid accessibility (test validation)
+POST http://127.0.0.1:8000/packages
+Content-Type: application/json
+
+{
+  "name": "Test Package",
+  "components": ["Test Component"],
+  "accessibility": 15,
+  "steps": ["Test step"]
+}
